@@ -45,16 +45,20 @@ class SmtController extends Controller
         return view('semesters.edit',['semester' => $semester]);
     }
  
-    public function update(Request $request, semester $post)
+    public function update(Request $request,$id)
     {
         $request->validate([
             'semester' => 'required',
         ]);
  
-        $post->update($request->all());
- 
-        return redirect()->route('semesters.index')
-                        ->with('success','semester updated successfully');
+        $semester = semester::find($id);
+
+        $dataRequest  = $request->all();
+        $dataResult  = array_filter($dataRequest);
+        $semester->update($dataResult);
+
+        return redirect('semesters')
+                        ->with('success','Semester updated successfully');
     }
  
     public function destroy($id)

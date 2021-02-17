@@ -34,34 +34,42 @@ class MtkController extends Controller
                         ->with('success','Matakuliah created successfully.');
     }
  
-    public function show(PoST $post)
+    public function show(int $id)
     {
-        return view('matakuliahs.show',compact('post'));
+        
+        $matakuliah = Matakuliah::findOrFail($id); 
+        return view('matakuliahs.show',['matakuliah' => $matakuliah]);
     }
  
-    public function edit(Post $post)
+    public function edit(int $id)
     {
-        return view('matakuliahs.edit',compact('post'));
+        $matakuliah = matakuliah::findOrFail($id); 
+        return view('matakuliahs.edit',['matakuliah' => $matakuliah]);
     }
- 
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'nama_matakuliah' => 'required',
             'sks' => 'required|numeric',
         ]);
  
-        $post->update($request->all());
- 
-        return redirect()->route('matakuliahs.index')
-                        ->with('success','Mahasiswa updated successfully');
+        $matakuliah = matakuliah::find($id);
+
+        $dataRequest  = $request->all();
+        $dataResult  = array_filter($dataRequest);
+        $matakuliah->update($dataResult);
+
+        return redirect('matakuliahs')
+                        ->with('success','Matakuliah updated successfully');
     }
  
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        $post->delete();
- 
-        return redirect()->route('matakuliahs.index')
-                        ->with('success','Mahasiswa deleted successfully');
+        $matakuliah = matakuliah :: where ('id',$id)->first();
+     
+         $matakuliah -> delete(); return redirect()->route('matakuliahs.index');
+
+                with('success','Matakuliah deleted successfully');
+        
     }
 }

@@ -29,14 +29,14 @@
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Id Mahasiswa:</strong>
-                <input type="string" name="mahasiswa_id" class="form-control" placeholder="Id Mahasiswa">
+                <strong>Mahasiswa Id:</strong>
+                <input type="string" name="mahasiswa_id" class="form-control" placeholder="Mahasiswa Id">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Id Semester:</strong>
-                <input type="string" name="semester_id" class="form-control" placeholder="Id Mahasiswa">
+                <strong>Semester Id:</strong>
+                <input type="string" name="semester_id" class="form-control" placeholder="Mahasiswa Id">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

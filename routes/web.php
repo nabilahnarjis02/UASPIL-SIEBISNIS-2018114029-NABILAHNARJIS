@@ -29,19 +29,40 @@ Route::resource('semesters', SmtController::class);
 //Route::delete('/mahasiswas/{id}', [MhsController::class, 'destroy']);
 
 
+Route::post('', [MhsController::class, 'index']);
 Route::get('', [MhsController::class, 'index']);
-Route::get('', [MtkController::class, 'index']);
-Route::get('', [AbsController::class, 'index']);
-Route::get('', [KtmController::class, 'index']);
-Route::get('', [JdwController::class, 'index']);
-Route::get('', [SmtController::class, 'index']);
+
+Route::get('/mahasiswas/{id}/edit', [MhsController::class, 'edit']);
 Route::delete('/mahasiswas/{id}', [MhsController::class, 'destroy']);
 Route::put('/mahasiswas/{id}', [MhsController::class, 'update']);
+
+
+Route::get('', [MtkController::class, 'index']);
+Route::post('', [MtkController::class, 'index']);
 Route::delete('/matakuliahs/{id}', [MtkController::class, 'destroy']);
-Route::put('/matakuliahs/{id}', [MtkController::class, 'update']);
+Route::put('/matakuliahs.update/{id}', [MtkController::class, 'update']);
+Route::put('/matakuliahs.store/{id}', [MtkController::class, 'store']);
+Route::get('/matakuliahs.edit/{id}', [MtkController::class, 'edit']);
+
+
+Route::get('/absensis/{id}', [AbsController::class, 'index']);
+Route::post('', [AbsController::class, 'index']);
+Route::get('/absensis/{id}', [AbsController::class, 'edit']);
 Route::delete('/absensis/{id}', [AbsController::class, 'destroy']);
 Route::put('/absensis/{id}', [AbsController::class, 'update']);
+
+
+Route::get('', [KtmController::class, 'index']);
+Route::post('', [KtmController::class, 'index']);
 Route::delete('/kontrakmks/{id}', [KtmController::class, 'destroy']);
 Route::put('/kontrakmks/{id}', [KtmController::class, 'update']);
+
+Route::get('', [JdwController::class, 'index']);
+Route::post('', [JdwController::class, 'index']);
+Route::delete('/jadwals/{id}', [JdwController::class, 'destroy']);
+Route::put('/jadwals/{id}', [JdwController::class, 'update']);
+
+Route::get('', [SmtController::class, 'index']);
+Route::post('', [SmtController::class, 'index']);
 Route::delete('/semesters/{id}', [SmtController::class, 'destroy']);
 Route::put('/semesters/{id}', [SmtController::class, 'update']);

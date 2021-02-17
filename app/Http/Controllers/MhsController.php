@@ -49,7 +49,7 @@ class MhsController extends Controller
         return view('mahasiswas.edit',['mahasiswa' => $mahasiswa]);
     }
  
-    public function update(Request $request, Mahasiswa $post)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'nama_mahasiswa' => 'required',
@@ -58,9 +58,13 @@ class MhsController extends Controller
             'email' => 'required',
         ]);
  
-        $post->update($request->all());
- 
-        return redirect()->route('mahasiswas.index')
+        $mahasiswa = mahasiswa::find($id);
+
+        $dataRequest  = $request->all();
+        $dataResult  = array_filter($dataRequest);
+        $mahasiswa->update($dataResult);
+
+        return redirect('mahasiswas')
                         ->with('success','Mahasiswa updated successfully');
     }
  

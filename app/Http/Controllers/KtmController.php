@@ -42,30 +42,33 @@ class KtmController extends Controller
  
     public function edit(int $id)
     {
-        $kontrakmk = Kontrakmk::findOrFail($id); 
+        $kontrakmk = kontrakmk::findOrFail($id); 
         return view('kontrakmks.edit',['kontrakmk' => $kontrakmk]);
     }
  
-    public function update(Request $request, Kontrakmk $post)
+    public function update(Request $request,$id)
     {
         $request->validate([
             'mahasiswa_id' => 'required',
             'semester_id' => 'required|numeric',
         ]);
  
-        $post->update($request->all());
- 
-        return redirect()->route('kontrakmks.index')
-                        ->with('success','Kontrak Mata Kuliah updated successfully');
+        $kontrakmk = kontrakmk::find($id);
+
+        $dataRequest  = $request->all();
+        $dataResult  = array_filter($dataRequest);
+        $kontrakmk->update($dataResult);
+
+        return redirect('kontrakmks')
+                        ->with('success','Kontrakmk updated successfully');
     }
  
     public function destroy($id)
     {
-        $kontrakmk = $kontrakmk :: where ('id',$id)->first();
+        $kontrakmk = kontrakmk :: where ('id',$id)->first();
      
          $kontrakmk -> delete(); return redirect()->route('kontrakmks.index');
 
-                with('success','Kontrak Mata Kuliah deleted successfully');
-        
-    }
+                with('success','Absensi deleted successfully');
+          }
 }

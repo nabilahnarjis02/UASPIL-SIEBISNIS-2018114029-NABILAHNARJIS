@@ -23,7 +23,7 @@
         </div>
     @endif
  
-    <form action="{{ route('semesters',$post->id) }}" method="POST">
+    <form action="/semesters/{{ $semester['id'] }}" method="POST">
         @csrf
         @method('PUT')
  
@@ -31,8 +31,12 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Semester:</strong>
-                <input type="string" name="semester" class="form-control" placeholder="Semester">
-            </div>
+                <input type="string" class="form-control" name="semester"id="exampleInputPassword1" 
+        value="{{ old('semester') ? old('semester') : $semester['semester']}}">
+        @error('semester')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+  </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
               <button type="submit" class="btn btn-primary">Update</button>

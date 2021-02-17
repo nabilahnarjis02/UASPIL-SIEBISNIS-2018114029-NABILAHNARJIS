@@ -30,7 +30,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Waktu Absen:</strong>
-                <input type="time" name="waktu_absen" class="form-control" placeholder="Waktu Absen">
+                <input type="date" name="waktu_absen" class="form-control" placeholder="Waktu Absen">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">

@@ -23,22 +23,29 @@
         </div>
     @endif
  
-    <form action="{{ route('matakuliahs.update',$post->id) }}" method="POST">
+    <form action="/matakuliahs/{{ $matakuliah['id'] }}" method="POST">
         @csrf
         @method('PUT')
  
         <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-            <strong>Nama Matakuliah:</strong>
-                <input type="string" name="nama_matakuliah" class="form-control" placeholder="Nama Matakuliah">
-            </div>
+        <div class="form-group">
+        <strong>Nama Matakuliah:</strong>
+        <input type="string" class="form-control" name="nama_matakuliah"id="exampleInputPassword1" 
+        value="{{ old('nama_matakuliah') ? old('nama_matakuliah') : $matakuliah['nama_matakuliah']}}">
+        @error('nama_matakuliah')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+  </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-            <strong>SKS:</strong>
-                <input type="string" name="sks" class="form-control" placeholder="SKS">
-            </div>
+        <div class="form-group">
+        <strong>SKS:</strong>
+        <input type="string" class="form-control" name="sks"id="exampleInputPassword1" 
+        value="{{ old('sks') ? old('sks') : $matakuliah['sks']}}">
+        @error('sks')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
               <button type="submit" class="btn btn-primary">Update</button>

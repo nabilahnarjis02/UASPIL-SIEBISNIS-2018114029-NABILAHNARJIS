@@ -22,8 +22,8 @@
         <tr>
         
             <th width="20px" class="text-center">Id</th>
-            <th>Id Mahasiswa</th>
-            <th>Id Semester</th>
+            <th>Mahasiswa Id</th>
+            <th>Semester Id</th>
             <th width="280px"class="text-center">Action</th>
         </tr>
         @foreach ($kontrakmks as $post)
@@ -34,9 +34,9 @@
             <td class="text-center">
                 <form action="{{ route('kontrakmks.destroy',$post->id) }}" method="POST">
  
-                    <a class="btn btn-info btn-sm" href="{{ route('kontrakmks.show',$post->id) }}">hasil Kontrakmk</a>
+                    <a class="btn btn-info btn-sm" href="{{ route('kontrakmks.show',$post->id) }}">show Kontrak</a>
  
-                    <a class="btn btn-primary btn-sm" href="{{ route('kontrakmks.edit',$post->id) }}">Edit Kontrakmk</a>
+                    <a class="btn btn-primary btn-sm" href="{{ route('kontrakmks.edit',$post->id) }}">Edit Kontrak</a>
  
                     @csrf
                     @method('DELETE')

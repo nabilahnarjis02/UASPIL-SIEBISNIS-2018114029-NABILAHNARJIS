@@ -23,7 +23,6 @@ class JdwController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id' => 'required|numeric|uniqe',
             'jadwal' => 'required',
             'matakuliah_id' => 'required',
         ]);
@@ -47,18 +46,22 @@ class JdwController extends Controller
         return view('jadwals.edit',['jadwal' => $jadwal]);
     }
  
-    public function update(Request $request, jadwal $post)
+    public function update(Request $request,$id)
     {
         $request->validate([
-            'id' => 'required|numeric|uniqe',
+
             'jadwal' => 'required',
             'matakuliah_id' => 'required',
         ]);
  
-        $post->update($request->all());
- 
-        return redirect()->route('jadwals.index')
-                        ->with('success','jadwal updated successfully');
+        $jadwal = jadwal::find($id);
+
+        $dataRequest  = $request->all();
+        $dataResult  = array_filter($dataRequest);
+        $jadwal->update($dataResult);
+
+        return redirect('jadwals')
+                        ->with('success','Jadwal updated successfully');
     }
  
     public function destroy($id)

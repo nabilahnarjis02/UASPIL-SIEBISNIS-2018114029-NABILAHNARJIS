@@ -23,22 +23,30 @@
         </div>
     @endif
  
-    <form action="{{ route('kontrakmks',$post->id) }}" method="POST">
+    <form action="/kontrakmks/{{ $kontrakmk['id'] }}" method="POST">
         @csrf
         @method('PUT')
  
         <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Id Mahasiswa:</strong>
-                <input type="string" name="mahasiswa_id" class="form-control" placeholder="Id Mahasiswa">
-            </div>
+                <strong>Mahasiswa Id:</strong>
+                <input type="string" class="form-control" name="mahasiswa_id"id="exampleInputPassword1" 
+        value="{{ old('mahasiswa_id') ? old('mahasiswa_id') : $kontrakmk['mahasiswa_id']}}">
+        @error('mahasiswa_id')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+</div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Id Semester:</strong>
-                <input type="string" name="semester_id" class="form-control" placeholder="Id Mahasiswa">
-            </div>
+                <strong>Semester Id:</strong>
+                <input type="string" class="form-control" name="semester_id"id="exampleInputPassword1" 
+        value="{{ old('semester_id') ? old('semester_id') : $kontrakmk['semester_id']}}">
+        @error('semester_id')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+</div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
               <button type="submit" class="btn btn-primary">Update</button>

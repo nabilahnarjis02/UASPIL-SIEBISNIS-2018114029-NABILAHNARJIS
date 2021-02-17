@@ -31,7 +31,7 @@
         @foreach ($absensis as $post)
         <tr>
             <td class="text-center">{{ ++$i }}</td>
-            <td>{{ $post->waktu_absensi}}</td>
+            <td>{{ $post->waktu_absen}}</td>
             <td>{{ $post->mahasiswa_id }}</td>
             <td>{{ $post->matakuliah_id }}</td>
             <td>{{ $post->keterangan }}</td>

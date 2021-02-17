@@ -23,7 +23,7 @@
         
             <th width="20px" class="text-center">Id</th>
             <th>Jadwal</th>
-            <th>Id Matakuliah</th>
+            <th>Matakuliah Id</th>
             <th width="280px"class="text-center">Action</th>
         </tr>
         @foreach ($jadwals as $post)
